@@ -20,15 +20,11 @@ public class Game {
         Quiz literatureQuiz = new Quiz("Literature");
         for (int i = 0; i < playerDesNoQuestions; i++) {
             Question question = new Question(Literature.getQuestions(i));
-
             for (int j = 0; j < Literature.getAnswersTotal(i); j++) {
                 Answer answer = new Answer(Literature.getAnswers(i, j), Literature.getAnswerCorrect(i, j));
                 question.addAnswer(answer);
             }
-
             literatureQuiz.addQuestion(question);
-            question.setAnswersTotal(Literature.getAnswersTotal(i));
-            question.setAnswersCorrectTotal(Literature.getAnswersCorrect(i));
         }
         score = literatureQuiz.quiz();
         return score;
@@ -39,47 +35,14 @@ public class Game {
         Quiz mathsQuiz = new Quiz("Maths");
         for (int i = 0; i < playerDesNoQuestions; i++) {
             Question question = new Question(Maths.getQuestions(i));
-
             for (int j = 0; j < Maths.getAnswersTotal(i); j++) {
                 Answer answer = new Answer(Maths.getAnswers(i, j), Maths.getAnswerCorrect(i, j));
                 question.addAnswer(answer);
             }
-
             mathsQuiz.addQuestion(question);
-            question.setAnswersTotal(Maths.getAnswersTotal(i));
-            question.setAnswersCorrectTotal(Maths.getAnswersCorrect(i));
         }
         score = mathsQuiz.quiz();
         return score;
-    }
-
-    public int numberOfPlayers() {
-        Scanner scanner = new Scanner(System.in);
-        int numberOfPlayers;
-        System.out.println("Select number of players 1-2");
-        while (true) {
-            try {
-                numberOfPlayers = Integer.parseInt(scanner.nextLine());
-                break;
-            } catch (Exception e) {
-                System.out.println("Type 1 or 2");
-            }
-        }
-        return numberOfPlayers;
-    }
-
-    public void rules(int i) {
-        System.out.println("You'll be presented by a number of questions. For each question " +
-                "you'll be presented with four options for an answer. Some questions have multiple " +
-                "correct answer, you'll be told how many. Each correct answer is worth one point. " +
-                "Incorrect answers do not deduct points. Answer by typing a, b, c, or d and hitting " +
-                "enter, for questions with multiple correct answers input your first choice and you'll " +
-                "be prompted to input your other choice after.");
-        if (i == 2) {
-            System.out.println("In multiplayer, two players take turns in answering different questions. " +
-                    "Make sure that you've inputted all options for a multiple option question as " +
-                    "the same players has to input all their choices before it's the other player's turn.");
-        }
     }
 
     public String selectSubject(ArrayList<String> alreadyPlayedSubjects) {

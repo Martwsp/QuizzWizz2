@@ -4,24 +4,20 @@ import java.util.List;
 public class Question {
     private final String question;
     private final List<Answer> answers;
-    private int answersTotal;
-    private int answersCorrectTotal;
 
     public Question(String question) {
         this.question = question;
         this.answers = new ArrayList<>();
     }
 
-    public void setAnswersCorrectTotal(int answersCorrectTotal) {
-        this.answersCorrectTotal = answersCorrectTotal;
-    }
-
     public int getAnswersCorrectTotal() {
-       return this.answersCorrectTotal;
-    }
-
-    public void setAnswersTotal(int answersTotal){
-        this.answersTotal = answersTotal;
+        int answersCorrectTotal = 0;
+        for (Answer answer: answers){
+            if (answer.isCorrect()) {
+                answersCorrectTotal++;
+            }
+        }
+       return answersCorrectTotal;
     }
 
     public void printQuestion(){

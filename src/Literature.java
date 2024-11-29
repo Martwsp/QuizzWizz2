@@ -1,21 +1,11 @@
 public class Literature {
 
-    static public String getQuestions(int i) {
+    public static String getQuestions(int i) {
         return questions[i];
     }
 
     public static String getAnswers(int i, int j) {
         return answers[i][j+1];
-    }
-
-    public static int getAnswersCorrect(int i) {
-        if (answersCorrect[i][2] > 0) {
-            return 3;
-        } else if ((answersCorrect[i][1] > 0)) {
-            return 2;
-        } else {
-            return 1;
-        }
     }
 
     public static boolean getAnswerCorrect(int i, int j){
